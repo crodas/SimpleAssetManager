@@ -10,7 +10,7 @@ You need to configure it
 
 ```php
 \crodas\Asset\Configure::get()
- ->setTemporary('/tmp/map.php') // It is where temporary info is stored, to speed up things
+ ->store('/tmp/map.php') // It is where temporary info is stored, to speed up things
  ->detDir('js', __DIR__ . '/public/js', '/js')                                                   
  ->setDir('css', __DIR__ . '/public/css', '/css');
 ```

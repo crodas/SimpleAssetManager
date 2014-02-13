@@ -39,11 +39,13 @@ namespace crodas\Asset;
 class Configuration
 {
     protected $file;
-    protected $data;
+    protected $data = array();
+    protected $loaded = array();
 
     public function __destruct()
     {
-        if ($this->file) {
+        if ($this->file && $this->data != $this->loaded) {
+            echo "store\n";
             file_put_contents(
                 $this->file, 
                 '<?php return ' . var_export($this->data, true) . ';',
@@ -65,8 +67,9 @@ class Configuration
 
     public function store($file)
     {
-        $this->file  = $file;
-        $this->data  = (Array)@include $file;
+        $this->file   = $file;
+        $this->loaded = (Array)@include $file;
+        $this->data   = array_merge($this->loaded, $this->data);
 
         return $this;
     }
