@@ -9,7 +9,7 @@
     ],
     "require": {
         "leafo/lessphp": "*",
-        "cssmin/cssmin": "*",
+        "cssmin/cssmin": "3.0.1",
         "patchwork/jsqueeze": "*",
         "leafo/scssphp": "*"
     },
