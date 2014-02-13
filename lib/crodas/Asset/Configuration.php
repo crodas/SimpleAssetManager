@@ -45,8 +45,7 @@ class Configuration
     public function __destruct()
     {
         if ($this->file && $this->data != $this->loaded) {
-            echo "store\n";
-            file_put_contents(
+            @file_put_contents(
                 $this->file, 
                 '<?php return ' . var_export($this->data, true) . ';',
                 LOCK_EX
