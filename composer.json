@@ -1,0 +1,32 @@
+{
+    "name": "crodas/asset",
+    "description": "Very simple asset manager",
+    "authors": [
+        {
+            "name": "César D. Rodas",
+            "email": "crodas@php.net"
+        }
+    ],
+    "require": {
+        "leafo/lessphp": "*",
+        "cssmin/cssmin": "*",
+        "patchwork/jsqueeze": "*",
+        "leafo/scssphp": "*"
+    },
+	"autoload": {
+		"classmap": [
+            "lib/"
+        ]
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "cssmin/cssmin",
+                "version": "3.0.1",
+                "dist": { "url": "http://cssmin.googlecode.com/files/cssmin-v3.0.1.php", "type": "file" },
+                "autoload": { "classmap": [ "cssmin-v3.0.1.php" ] }
+            }
+        }
+    ]
+}
