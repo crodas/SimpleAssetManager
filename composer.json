@@ -9,7 +9,6 @@
     ],
     "require": {
         "leafo/lessphp": "*",
-        "cssmin/cssmin": "3.0.1",
         "patchwork/jsqueeze": "*",
         "leafo/scssphp": "*"
     },
@@ -17,16 +16,5 @@
 		"classmap": [
             "lib/"
         ]
-    },
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "cssmin/cssmin",
-                "version": "3.0.1",
-                "dist": { "url": "http://cssmin.googlecode.com/files/cssmin-v3.0.1.php", "type": "file" },
-                "autoload": { "classmap": [ "cssmin-v3.0.1.php" ] }
-            }
-        }
-    ]
+    }
 }
