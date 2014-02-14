@@ -41,8 +41,17 @@ class Asset
 {
     public static function generic($type, Array $paths)
     {
-        $data = &Configuration::get()->getData();
+        static $data;
+        if (!$data) {
+            $data = &Configuration::get()->getData();
+        }
         $key  = serialize($paths);
+
+        if (count($paths) == 1 && !empty($data['packages'][$paths[0]])) {
+            $key   = $paths[0];
+            $paths = $data['packages'][$paths[0]];
+            $fpath = $key;
+        }
 
         if (!empty($data['cache'][$key])) {
             if (!empty($data['prod'])) {
@@ -73,9 +82,11 @@ class Asset
             }
         }
 
-        $fpath = implode('.', array_map(function($file) {
-            return basename($file);
-        }, $paths));
+        if (empty($fpath)) {
+            $fpath = implode('.', array_map(function($file) {
+                return basename($file);
+            }, $paths));
+        }
         $fpath = str_replace(".$type", "", $fpath);
 
         $content = "";
@@ -105,6 +116,15 @@ class Asset
         file_put_contents($data['cache'][$key]['real'], $content, LOCK_EX);
 
         return $data['cache'][$key]['fpath'];
+    }
+
+    public static function define($name, $paths)
+    {
+        static $data;
+        if (!$data) {
+            $data = &Configuration::get()->getData();
+        }
+        $data['packages'][$name] = (Array)$paths;
     }
 
     public static function js()
