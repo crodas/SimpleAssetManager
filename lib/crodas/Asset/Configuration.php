@@ -67,7 +67,7 @@ class Configuration
     public function store($file)
     {
         $this->file   = $file;
-        $this->loaded = (Array)@include $file;
+        $this->loaded = array_filter((Array)@include $file);
         $this->data   = array_merge($this->loaded, $this->data);
 
         return $this;
