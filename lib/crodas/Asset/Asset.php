@@ -37,6 +37,8 @@
 
 use crodas\Asset\Configuration;
 
+use crodas\File;
+
 class Asset
 {
     public static function generic($type, Array $paths)
@@ -113,7 +115,7 @@ class Asset
             'times' => $times,
         );
 
-        file_put_contents($data['cache'][$key]['real'], $content, LOCK_EX);
+        File::write($data['cache'][$key]['real'], $content);
 
         return $data['cache'][$key]['fpath'];
     }

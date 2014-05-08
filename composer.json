@@ -8,6 +8,7 @@
         }
     ],
     "require": {
+        "crodas/path":"*",
         "leafo/lessphp": "*",
         "patchwork/jsqueeze": "*",
         "leafo/scssphp": "*"

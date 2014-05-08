@@ -3,23 +3,40 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "493d2facd15d58fc953b63cdd78b9ca3",
+    "hash": "877b4ac2c28c8537d451d8b8c1d21e7c",
     "packages": [
         {
-            "name": "cssmin/cssmin",
-            "version": "3.0.1",
+            "name": "crodas/path",
+            "version": "v0.1.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/crodas/Path.git",
+                "reference": "15ef24c4b2b81d8e5148406012af0a633126b3d5"
+            },
             "dist": {
-                "type": "file",
-                "url": "http://cssmin.googlecode.com/files/cssmin-v3.0.1.php",
-                "reference": null,
-                "shasum": null
+                "type": "zip",
+                "url": "https://api.github.com/repos/crodas/Path/zipball/15ef24c4b2b81d8e5148406012af0a633126b3d5",
+                "reference": "15ef24c4b2b81d8e5148406012af0a633126b3d5",
+                "shasum": ""
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "cssmin-v3.0.1.php"
-                ]
-            }
+                "psr-0": {
+                    "crodas": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-4-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "César D. Rodas",
+                    "email": "crodas@php.net"
+                }
+            ],
+            "description": "Library to manipulate paths",
+            "time": "2013-10-23 16:48:11"
         },
         {
             "name": "leafo/lessphp",
@@ -64,16 +81,16 @@
         },
         {
             "name": "leafo/scssphp",
-            "version": "v0.0.9",
+            "version": "0.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leafo/scssphp.git",
-                "reference": "a06d702ebf9fabb22542bbb27cc12a905813bb6d"
+                "reference": "558357feceb9b932a192966945904414dc372e4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/leafo/scssphp/zipball/a06d702ebf9fabb22542bbb27cc12a905813bb6d",
-                "reference": "a06d702ebf9fabb22542bbb27cc12a905813bb6d",
+                "url": "https://api.github.com/repos/leafo/scssphp/zipball/558357feceb9b932a192966945904414dc372e4d",
+                "reference": "558357feceb9b932a192966945904414dc372e4d",
                 "shasum": ""
             },
             "require": {
@@ -106,7 +123,7 @@
             ],
             "description": "scssphp is a compiler for SCSS written in PHP.",
             "homepage": "http://leafo.net/scssphp/",
-            "time": "2013-12-23 23:28:02"
+            "time": "2014-04-15 02:25:09"
         },
         {
             "name": "patchwork/jsqueeze",
