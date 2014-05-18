@@ -45,9 +45,36 @@ class Asset
 {
     use EventEmitter;
 
+    protected $paths = array();
+
     public static function get()
     {
         return new Cache('assets.php', new self);
+    }
+
+    public static function addPath($path)
+    {
+        self::$paths[] = $path;
+    }
+
+    public static function prepare($path, Array $files, $out)
+    {
+        $content = "";
+        $paths   = array_merge(self::$paths, $path);
+        foreach ($files as $file) {
+            if (!is_file($file)) {
+                foreach ($paths as $path) {
+                    if (is_file($path . "/" . $file)) {
+                        $file = $path . "/" . $file;
+                        break;
+                    }
+                }
+            }
+
+            $content .= file_get_contents($file);
+        }
+
+        File::write($out, $content);
     }
 
     public static function generic($type, Array $paths)
