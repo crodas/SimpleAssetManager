@@ -80,17 +80,19 @@ class Asset
             $content .= file_get_contents($file);
         }
 
+        $hash = substr(sha1($content), 0, 8);
+        $type = strstr($out, ".");
+
         if (self::$is_prod) {
-            $type = strstr($out, ".");
-            $hash = substr(sha1($content), 0, 8);
-            if ($type == 'j.s') {
+            if ($type == '.js') {
                 $js = new JSqueeze;
                 $content = $js->squeeze($content, true);
             } else if ($type == '.css') {
                 $content = CssMin::minify($content);
             }
-            $out = preg_replace("/$type$/", ".{$hash}{$type}", $out);
         }
+
+        $out = preg_replace("/$type$/", ".{$hash}{$type}", $out);
 
         foreach ($paths as $path) {
             try {
