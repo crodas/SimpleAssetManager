@@ -45,7 +45,7 @@ class Asset
 {
     use EventEmitter;
 
-    protected $paths = array();
+    protected static $paths = array();
 
     public static function get()
     {
