@@ -37,10 +37,19 @@
 
 use crodas\Asset\Configuration;
 
-use crodas\File;
+use crodas\FileUtil\Cache;
+use crodas\FileUtil\File;
+use ServiceProvider\EventEmitter;
 
 class Asset
 {
+    use EventEmitter;
+
+    public static function get()
+    {
+        return new Cache('assets.php', new self);
+    }
+
     public static function generic($type, Array $paths)
     {
         static $data;

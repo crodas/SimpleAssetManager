@@ -8,10 +8,11 @@
         }
     ],
     "require": {
-        "crodas/path":"*",
+        "crodas/file-util":">=0.1.7",
         "leafo/lessphp": "*",
         "patchwork/jsqueeze": "*",
-        "leafo/scssphp": "*"
+        "leafo/scssphp": "*",
+        "crodas/service-provider": ">=0.1.17"
     },
 	"autoload": {
 		"classmap": [
