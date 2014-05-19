@@ -76,6 +76,8 @@ class Asset
                     }
                 }
             }
+            
+            self::trigger('file', [$file]);
 
             $content .= file_get_contents($file);
         }
