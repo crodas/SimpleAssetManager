@@ -99,6 +99,7 @@ class Asset
         foreach ($paths as $path) {
             try {
                 File::write($path . '/' . $out, $content);
+                self::trigger('file', [$path . '/' . $out]);
                 break;
             } catch (\Exception $e) {
             }
