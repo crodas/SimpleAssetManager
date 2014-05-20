@@ -92,6 +92,7 @@ class Asset
             } else if ($type == '.css') {
                 $content = CssMin::minify($content);
             }
+            $hash .= ".min";
         }
 
         $out = preg_replace("/$type$/", ".{$hash}{$type}", $out);
