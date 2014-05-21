@@ -101,6 +101,7 @@ class Asset
             try {
                 File::write($path . '/' . $out, $content);
                 self::trigger('file', [$path . '/' . $out]);
+                self::trigger('file:output', [$path . '/' . $out]);
                 self::trigger('output', [&$out]);
                 break;
             } catch (\Exception $e) {
