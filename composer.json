@@ -19,4 +19,17 @@
             "lib/"
         ]
     }
+    "license": "BSD-4-Clause",
+    "version": "v0.1.1",
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "cssmin/cssmin",
+                "version": "3.0.1",
+                "dist": { "url": "http://cssmin.googlecode.com/files/cssmin-v3.0.1.php", "type": "file" },
+                "autoload": { "classmap": [ "cssmin-v3.0.1.php" ] }
+            }
+        }
+    ]
 }
