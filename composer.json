@@ -8,16 +8,19 @@
         }
     ],
     "require": {
+        "crodas/file-util":">=0.1.7",
         "leafo/lessphp": "*",
-        "cssmin/cssmin": "*",
         "patchwork/jsqueeze": "*",
-        "leafo/scssphp": "*"
+        "leafo/scssphp": "*",
+        "crodas/service-provider": ">=0.1.17"
     },
 	"autoload": {
 		"classmap": [
             "lib/"
         ]
-    },
+    }
+    "license": "BSD-4-Clause",
+    "version": "v0.1.1",
     "repositories": [
         {
             "type": "package",
