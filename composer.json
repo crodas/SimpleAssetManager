@@ -18,9 +18,9 @@
 		"classmap": [
             "lib/"
         ]
-    }
+    },
     "license": "BSD-4-Clause",
-    "version": "v0.1.1",
+    "version": "v0.1.2",
     "repositories": [
         {
             "type": "package",
