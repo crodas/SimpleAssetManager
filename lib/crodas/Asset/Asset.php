@@ -46,10 +46,16 @@ class Asset
     use EventEmitter;
 
     protected static $paths = array();
+    protected static $is_prod = false;
 
     public static function get()
     {
         return new Cache('assets.php', new self);
+    }
+
+    public static function prod()
+    {
+        self::$is_prod = true;
     }
 
     public static function addPath($path)
@@ -60,7 +66,7 @@ class Asset
     public static function prepare($path, Array $files, $out)
     {
         $content = "";
-        $paths   = array_merge(self::$paths, $path);
+        $paths   = array_merge(self::$paths, [$path]);
         foreach ($files as $file) {
             if (!is_file($file)) {
                 foreach ($paths as $path) {
@@ -70,11 +76,39 @@ class Asset
                     }
                 }
             }
+            
+            self::trigger('file', [$file]);
 
             $content .= file_get_contents($file);
         }
 
-        File::write($out, $content);
+        $hash = substr(sha1($content), 0, 8);
+        $type = strstr($out, ".");
+
+        if (self::$is_prod) {
+            if ($type == '.js') {
+                $js = new JSqueeze;
+                $content = $js->squeeze($content, true);
+            } else if ($type == '.css') {
+                $content = CssMin::minify($content);
+            }
+            $hash .= ".min";
+        }
+
+        $out = preg_replace("/$type$/", ".{$hash}{$type}", $out);
+
+        foreach ($paths as $path) {
+            try {
+                File::write($path . '/' . $out, $content);
+                self::trigger('file', [$path . '/' . $out]);
+                self::trigger('file:output', [$path . '/' . $out]);
+                self::trigger('output', [&$out]);
+                break;
+            } catch (\Exception $e) {
+            }
+        }
+
+        return $out;
     }
 
     public static function generic($type, Array $paths)
