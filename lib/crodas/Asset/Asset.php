@@ -50,7 +50,7 @@ class Asset
 
     public static function get()
     {
-        return new Cache('assets.php', new self);
+        return new Cache(new self);
     }
 
     public static function prod()

@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "crodas/file-util":">=0.1.7",
+        "crodas/file-util":">=0.1.14",
         "leafo/lessphp": "*",
         "patchwork/jsqueeze": "*",
         "leafo/scssphp": "*",
